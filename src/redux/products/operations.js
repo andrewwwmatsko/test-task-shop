@@ -1,5 +1,10 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
+import {
+  notifyOnError,
+  notifyOnProductAdd,
+  notifyOnProductRemove,
+} from "../../helpers/hotToasters";
 
 axios.defaults.baseURL = "https://66ac9642f009b9d5c732a6e5.mockapi.io";
 
@@ -32,8 +37,10 @@ export const addProduct = createAsyncThunk(
   async (product, thunkAPI) => {
     try {
       const response = await axios.post("/products", product);
+      notifyOnProductAdd();
       return response.data;
     } catch (error) {
+      notifyOnError(error.message);
       return thunkAPI.rejectWithValue(error.message);
     }
   }
@@ -44,8 +51,10 @@ export const deleteProduct = createAsyncThunk(
   async (id, thunkAPI) => {
     try {
       const response = await axios.delete(`/products/${id}`);
+      notifyOnProductRemove();
       return response.data;
     } catch (error) {
+      notifyOnError(error.message);
       return thunkAPI.rejectWithValue(error.message);
     }
   }
