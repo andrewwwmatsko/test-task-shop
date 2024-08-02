@@ -16,8 +16,7 @@ import { Button, useDisclosure } from "@nextui-org/react";
 import SelectFilter from "../../components/SelectFilter/SelectFilter";
 
 export default function ProductsPage() {
-  const products = useSelector(selectFilteredContacts);
-  console.log("ProductsPage ~ products:", products);
+  const products = useSelector(selectProducts);
 
   const dispatch = useDispatch();
 
@@ -45,7 +44,7 @@ export default function ProductsPage() {
             <SelectFilter />
           </div>
 
-          {/* {products.length > 0 && <ProductList products={products} />} */}
+          {products.length > 0 && <ProductList products={products} />}
           <ModalAddForm isOpen={isOpen} onClose={onClose} />
         </Layout>
       </section>
