@@ -10,6 +10,7 @@ import ModalAddForm from "../../components/ModalAddForm/ModalAddForm";
 
 import css from "./ProductsPage.module.css";
 import { Button, useDisclosure } from "@nextui-org/react";
+import SelectFilter from "../../components/SelectFilter/SelectFilter";
 
 export default function ProductsPage() {
   const products = useSelector(selectProducts);
@@ -29,13 +30,16 @@ export default function ProductsPage() {
     <main>
       <section className={css.section}>
         <Layout>
-          <Button
-            onClick={handleOpen}
-            radius="full"
-            className="bg-gradient-to-tr from-pink-500 to-yellow-500 text-white shadow-lg my-0 mx-auto mb-12 block"
-          >
-            Add Product
-          </Button>
+          <div className="flex gap-10 justify-end">
+            <Button
+              onClick={handleOpen}
+              radius="full"
+              className="bg-gradient-to-tr from-pink-500 to-yellow-500 text-white shadow-lg my-0 mx-auto mb-12 block"
+            >
+              Add Product
+            </Button>
+            <SelectFilter />
+          </div>
 
           {products.length > 0 && <ProductList products={products} />}
           <ModalAddForm isOpen={isOpen} onClose={onClose} />
