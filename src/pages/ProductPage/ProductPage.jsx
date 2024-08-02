@@ -77,7 +77,7 @@ export default function ProductPage() {
           </div>
         </section>
       )}
-      <EditModal isOpen={isOpen} onClose={onClose} />
+      {/* <EditModal isOpen={isOpen} onClose={onClose} /> */}
     </main>
   );
 }
