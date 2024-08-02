@@ -32,9 +32,9 @@ export default function ProductsPage() {
           <Button
             onClick={handleOpen}
             radius="full"
-            className="bg-gradient-to-tr from-pink-500 to-yellow-500 text-white shadow-lg"
+            className="bg-gradient-to-tr from-pink-500 to-yellow-500 text-white shadow-lg my-0 mx-auto mb-12 block"
           >
-            Add
+            Add Product
           </Button>
 
           {products.length > 0 && <ProductList products={products} />}
