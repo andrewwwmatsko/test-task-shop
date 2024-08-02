@@ -2,7 +2,10 @@ import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { fetchProducts } from "../../redux/products/operations";
 
-import { selectProducts } from "../../redux/products/selectors";
+import {
+  selectFilteredContacts,
+  selectProducts,
+} from "../../redux/products/selectors";
 
 import ProductList from "../../components/ProductList/ProductList";
 import Layout from "../../components/Layout/Layout";
@@ -13,7 +16,8 @@ import { Button, useDisclosure } from "@nextui-org/react";
 import SelectFilter from "../../components/SelectFilter/SelectFilter";
 
 export default function ProductsPage() {
-  const products = useSelector(selectProducts);
+  const products = useSelector(selectFilteredContacts);
+  console.log("ProductsPage ~ products:", products);
 
   const dispatch = useDispatch();
 
@@ -41,7 +45,7 @@ export default function ProductsPage() {
             <SelectFilter />
           </div>
 
-          {products.length > 0 && <ProductList products={products} />}
+          {/* {products.length > 0 && <ProductList products={products} />} */}
           <ModalAddForm isOpen={isOpen} onClose={onClose} />
         </Layout>
       </section>

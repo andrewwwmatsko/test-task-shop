@@ -4,8 +4,7 @@ const filtersSlice = createSlice({
   name: "filters",
   initialState: {
     types: ["Aplhabetical", "By Count"],
-    alphabetical: true,
-    byCount: false,
+    state: { alphabetical: true, byCount: false },
   },
   reducers: {
     changeFilter(state) {
