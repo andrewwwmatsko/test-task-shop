@@ -1,0 +1,11 @@
+.link {
+  font-size: 18px;
+  font-family: sans-serif;
+  padding: 10px;
+  color: #e2e2e2;
+}
+
+.isActive {
+  transform: scale(1.05);
+  font-weight: 600;
+}
