@@ -1,16 +1,20 @@
 import { Select, SelectItem } from "@nextui-org/react";
 import { useDispatch, useSelector } from "react-redux";
 
-import { selectFilterTypes } from "../../redux/filters/selectors";
+import {
+  selectCurrentFilter,
+  selectFilterTypes,
+} from "../../redux/filters/selectors";
 import { changeFilter } from "../../redux/filters/slice";
 
 export default function SelectFilter() {
   const filterTypes = useSelector(selectFilterTypes);
+  const filter = useSelector(selectCurrentFilter);
 
   const dispatch = useDispatch();
 
-  const handleChange = () => {
-    dispatch(changeFilter());
+  const handleChange = (e) => {
+    dispatch(changeFilter(e.target.value));
   };
 
   return (
@@ -20,6 +24,7 @@ export default function SelectFilter() {
         placeholder="Select filter"
         className="max-w-lg"
         onChange={handleChange}
+        defaultSelectedKeys={[filter]}
       >
         {filterTypes.map((animal) => (
           <SelectItem key={animal}>{animal}</SelectItem>

@@ -2,10 +2,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { fetchProducts } from "../../redux/products/operations";
 
-import {
-  selectFilteredContacts,
-  selectProducts,
-} from "../../redux/products/selectors";
+import { selectFilteredContacts } from "../../redux/products/selectors";
 
 import ProductList from "../../components/ProductList/ProductList";
 import Layout from "../../components/Layout/Layout";
@@ -16,7 +13,7 @@ import { Button, useDisclosure } from "@nextui-org/react";
 import SelectFilter from "../../components/SelectFilter/SelectFilter";
 
 export default function ProductsPage() {
-  const products = useSelector(selectProducts);
+  const products = useSelector(selectFilteredContacts);
 
   const dispatch = useDispatch();
 

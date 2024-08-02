@@ -7,9 +7,14 @@ const filtersSlice = createSlice({
     state: { alphabetical: true, byCount: false },
   },
   reducers: {
-    changeFilter(state) {
-      state.alphabetical = false;
-      state.byCount = true;
+    changeFilter(state, { payload }) {
+      if (payload === state.types[0]) {
+        state.state.alphabetical = true;
+        state.state.byCount = false;
+      } else if (payload === state.types[1]) {
+        state.state.alphabetical = false;
+        state.state.byCount = true;
+      }
     },
   },
 });

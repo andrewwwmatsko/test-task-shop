@@ -9,8 +9,8 @@ export const selectLoading = (state) => state.products.isLoading;
 
 export const selectFilteredContacts = createSelector(
   [selectFilter, selectProducts],
-  ({ alphabetical, byCount }, products) => {
-    alphabetical
+  (filters, products) => {
+    return filters.byCount
       ? products.toSorted((a, b) => a.count - b.count)
       : products.toSorted((a, b) => a.name.localeCompare(b.name));
   }

@@ -10,7 +10,7 @@ import { deleteProduct } from "../../redux/products/operations";
 
 import ModalComponent from "../ModalComponent/ModalComponent";
 
-export default function Product({ product: { imageUrl, name, id } }) {
+export default function Product({ product: { imageUrl, name, id, count } }) {
   const dispatch = useDispatch();
 
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -28,6 +28,7 @@ export default function Product({ product: { imageUrl, name, id } }) {
       <CardHeader className="flex items-center justify-between">
         <Link to={`/products/${id}`}>
           <p className="text-md font-semibold">{name}</p>
+          <p className="text-md font-semibold">{count}</p>
         </Link>
 
         <IconButton
